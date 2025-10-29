@@ -6,3 +6,5 @@ jobs:
     steps:
       - name: instalacje TeX Live
         run: sudo apt-get update && sudo apt-get install -y texlive-xetex
+      - name: instalacja bibliotek
+        run: pip install scipy pint open_atmos_jupyter_utils matplotlib
