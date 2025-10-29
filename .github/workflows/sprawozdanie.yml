@@ -5,6 +5,12 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: instalacje TeX Live
-        run: sudo apt-get update && sudo apt-get install -y texlive-xetex
+        run: sudo apt-get update && sudo apt-get install -y texlive-xetex 
+      - name: instalacje innych potrzebnych
+        run: sudo apt-get install pandoc inkscape
       - name: instalacja bibliotek
-        run: pip install scipy pint open_atmos_jupyter_utils matplotlib
+        run: pip install scipy pint open_atmos_jupyter_utils matplotlib nbconvert
+      - name: dodanie plikow z repozytorium
+        uses: actions/checkout@v4
+      - name: uruchumienie notebooka
+        run: python -m nbconvert --to pdf --execute lab1.ipynb
