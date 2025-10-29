@@ -5,15 +5,13 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: instalacje TeX Live
-        run: sudo apt-get update && sudo apt-get install -y texlive-xetex 
+        run: sudo apt-get install -y texlive-xetex 
       - name: instalacje innych potrzebnych
         run: sudo apt-get install pandoc inkscape
       - name: instalacja python
         run: python -m pip install --upgrade pip
       - name: instalacja bibliotek
-        run: pip install scipy pint open_atmos_jupyter_utils matplotlib nbconvert
-      - name: Rejestracja kernela Python
-        run: python -m ipykernel install --user --name=python3
+        run: pip install ipykernel scipy pint open_atmos_jupyter_utils matplotlib nbconvert
       - name: dodanie plikow z repozytorium
         uses: actions/checkout@v4
       - name: uruchumienie notebooka
