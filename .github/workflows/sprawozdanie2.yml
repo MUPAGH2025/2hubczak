@@ -4,8 +4,8 @@ jobs:
   pdf:
     runs-on: ubuntu-22.04
     steps:
-      - name: instalacje TeX Live
-        run: sudo apt-get install -y texlive-xetex 
+      # - name: instalacje TeX Live
+      #   run: sudo apt-get install -y texlive-xetex 
       - name: instalacje innych potrzebnych
         run: sudo apt-get install pandoc inkscape
       - name: instalacja python
@@ -15,9 +15,9 @@ jobs:
       - name: dodanie plikow z repozytorium
         uses: actions/checkout@v4
       - name: uruchumienie notebooka
-        run: python -m nbconvert --to pdf --execute mpdata_2d_numpy_only(6).ipynb
+        run: python -m nbconvert --to script --execute mpdata_2d_numpy_only(6).ipynb
       - name: pobieranie artefaktu
         uses: actions/upload-artifact@v4
         with:
-          name: lab2-pdf
-          path: lab2.pdf
+          name: lab2-gif
+          path: lab2.gif
