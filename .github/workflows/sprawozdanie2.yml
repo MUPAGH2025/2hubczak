@@ -15,7 +15,7 @@ jobs:
       - name: dodanie plikow z repozytorium
         uses: actions/checkout@v4
       - name: uruchumienie notebooka
-        run: python -m nbconvert --to script --execute mpdata_2d_numpy_only(6).ipynb
+        run: python -m nbconvert --to script --execute mpdata_2d_numpy_only.ipynb
       - name: pobieranie artefaktu
         uses: actions/upload-artifact@v4
         with:
