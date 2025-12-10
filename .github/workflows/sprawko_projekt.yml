@@ -15,9 +15,17 @@ jobs:
       - name: dodanie plikow z repozytorium
         uses: actions/checkout@v4
       - name: uruchumienie notebooka
-        run: python -m nbconvert --to pdf --execute project.ipynb
+        run: jupyter nbconvert --to latex --no-input --execute project.ipynb
+      - name: uruchumienie notebooka
+        run: sed -i '/HBox(children=/d' project.tex
+      - name: uruchumienie notebooka
+        run: sed -i 's/\\title{PROJEKT}/\\title{Modelowanie układów przepływowych}\\author{Michał Hubczak}/' project.tex
+      - name: uruchumienie notebooka
+        run: xelatex -interaction=nonstopmode project.tex
+      - name: uruchumienie notebooka
+        run: xelatex -interaction=nonstopmode project.tex
       - name: pobieranie artefaktu
         uses: actions/upload-artifact@v4
         with:
-          name: sprawzdania-pdf
+          name: raport-pdf
           path: project.pdf
